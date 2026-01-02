@@ -19,7 +19,7 @@ spec:
       - name: ghcr-secret
       containers:
       - name: worker
-        image: ghcr.io/kkogaa/extracto-spider-worker:IMAGE_TAG
+        image: ghcr.io/kkogaa/extracto-spider-worker:bc2ca40
         imagePullPolicy: Always
         env:
         - name: REDIS_HOST
