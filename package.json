@@ -1,0 +1,29 @@
+{
+  "name": "extracto-spider-worker",
+  "version": "1.0.0",
+  "description": "Spider worker for Extracto using Playwright - Processes scraping jobs from queue",
+  "main": "dist/worker.js",
+  "scripts": {
+    "dev": "tsx watch src/worker.ts",
+    "build": "tsc",
+    "start": "node dist/worker.js"
+  },
+  "keywords": [
+    "worker",
+    "playwright",
+    "scraping",
+    "queue"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bullmq": "^5.66.4",
+    "dotenv": "^17.2.3",
+    "playwright": "^1.57.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}

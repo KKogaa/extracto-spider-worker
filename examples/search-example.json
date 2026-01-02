@@ -1,0 +1,32 @@
+{
+  "url": "https://example.com",
+  "actions": [
+    {
+      "type": "navigate",
+      "url": "https://example.com/search"
+    },
+    {
+      "type": "fill",
+      "selector": "#search-input",
+      "value": "playwright automation"
+    },
+    {
+      "type": "press",
+      "selector": "#search-input",
+      "key": "Enter"
+    },
+    {
+      "type": "waitForSelector",
+      "selector": ".search-results"
+    },
+    {
+      "type": "getText",
+      "selector": ".result-count",
+      "saveTo": "totalResults"
+    },
+    {
+      "type": "getContent",
+      "saveTo": "searchResultsHtml"
+    }
+  ]
+}

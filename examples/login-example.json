@@ -1,0 +1,39 @@
+{
+  "url": "https://example.com",
+  "actions": [
+    {
+      "type": "navigate",
+      "url": "https://example.com/login"
+    },
+    {
+      "type": "fill",
+      "selector": "#username",
+      "value": "user@example.com"
+    },
+    {
+      "type": "fill",
+      "selector": "#password",
+      "value": "mypassword"
+    },
+    {
+      "type": "click",
+      "selector": "button[type='submit']"
+    },
+    {
+      "type": "waitForNavigation"
+    },
+    {
+      "type": "waitForSelector",
+      "selector": ".dashboard"
+    },
+    {
+      "type": "getContent",
+      "saveTo": "dashboardHtml"
+    },
+    {
+      "type": "screenshot",
+      "fullPage": true,
+      "saveTo": "screenshot"
+    }
+  ]
+}
