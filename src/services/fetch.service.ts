@@ -13,7 +13,12 @@ export class FetchService {
   async initialize(): Promise<void> {
     this.browser = await chromium.launch({
       headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-blink-features=AutomationControlled',
+        '--disable-dev-shm-usage',
+      ],
     });
     console.log('Playwright browser initialized');
   }
@@ -53,12 +58,20 @@ export class FetchService {
 
     const context = await this.browser!.newContext({
       extraHTTPHeaders: headers,
+      userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      viewport: { width: 1920, height: 1080 },
+      locale: 'es-PE',
     });
 
     let page: Page | null = null;
 
     try {
       page = await context.newPage();
+      
+      // Remove webdriver flag
+      await page.addInitScript(() => {
+        Object.defineProperty(navigator, 'webdriver', { get: () => false });
+      });
 
       const response = await page.goto(url, {
         timeout,
@@ -109,12 +122,20 @@ export class FetchService {
 
     const context = await this.browser!.newContext({
       extraHTTPHeaders: headers,
+      userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      viewport: { width: 1920, height: 1080 },
+      locale: 'es-PE',
     });
 
     let page: Page | null = null;
 
     try {
       page = await context.newPage();
+      
+      // Remove webdriver flag
+      await page.addInitScript(() => {
+        Object.defineProperty(navigator, 'webdriver', { get: () => false });
+      });
 
       // Execute all actions
       const { results, extractedData } = await this.actionExecutor.executeActions(
