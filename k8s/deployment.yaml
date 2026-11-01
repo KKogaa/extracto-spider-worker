@@ -28,6 +28,8 @@ spec:
           value: "6379"
         - name: NODE_ENV
           value: "production"
+        - name: QUEUE_CONCURRENCY
+          value: "2"
         resources:
           requests:
             memory: "256Mi"
